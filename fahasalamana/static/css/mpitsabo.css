@@ -1,0 +1,40 @@
+/* Style spécial pour les Mpitsabo */
+.card-header.bg-success {
+    background-color: #28a745 !important;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Animation pour les formulaires */
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Style pour les champs obligatoires */
+label[required]:after {
+    content: " *";
+    color: #dc3545;
+}
+
+/* Style pour la checkbox */
+.form-check-input:checked {
+    background-color: #28a745;
+    border-color: #28a745;
+}

@@ -1,0 +1,33 @@
+
+{% block votoaty %}
+<div class="container mt-4">
+    <h2 class="mb-4"><i class="bi bi-chat-dots"></i> Hafatra</h2>
+    
+    <div class="card">
+        <div class="card-header bg-success text-white">
+            Hafatra nalefan'ny mpampiasa
+        </div>
+        <div class="list-group list-group-flush">
+            {% for hafatra in hafatra %}
+            <a href="{% url 'hafa_hafatra' hafatra.mpandefa.id %}" 
+               class="list-group-item list-group-item-action {% if not hafatra.vakina %}list-group-item-warning{% endif %}">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <strong>{{ hafatra.mpandefa.anarana_feno }}</strong>
+                        <p class="mb-0">{{ hafatra.votoaty|truncatechars:50 }}</p>
+                    </div>
+                    <div class="text-end">
+                        <small class="text-muted">{{ hafatra.daty|date:"H:i" }}</small>
+                        {% if not hafatra.vakina %}<span class="badge bg-danger">Vaovao</span>{% endif %}
+                    </div>
+                </div>
+            </a>
+            {% empty %}
+            <div class="list-group-item">
+                Tsy misy hafatra vaovao
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

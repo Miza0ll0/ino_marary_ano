@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisoratana anarana ho Mpitsabo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        /* Fomban'ny Vatana sy Fototra (Body and Base Styles) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fbfd; /* Loko maivana sy madio ho an'ny fiaviana */
+            color: #333;
+            display: flex; /* Mampiasa flexbox mba hametrahana ny votoaty eo afovoany */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Havoana feno ho an'ny efijery */
+            flex-direction: column; /* Manangona ireo singa mitsangana */
+        }
+
+        /* --- Fanaingoana Navbar (raha toa ka ampidirina indray) --- */
+        /* Na dia esorina aza eto mba hifantohana amin'ny form, azo averina raha ilaina */
+        /*
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 600;
+            margin: 0 0.8rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .navbar-text {
+            color: #e0e0e0 !important;
+            margin-right: 1rem;
+        }
+        */
+
+        /* --- Fanaingoana ny Vata sy ny Endrika Form --- */
+        .registration-card { /* Novaina anarana ho an'ny fahazoana tsara kokoa */
+            background-color: #ffffff;
+            padding: 2.5rem; /* Padding anatiny lehibe kokoa */
+            border-radius: 12px; /* Sisiny boribory mitovy */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Aloka misongadina kokoa */
+            max-width: 550px; /* Sakany tsara indrindra ho an'ny form fisoratana */
+            width: 90%; /* Sakany responsive */
+            text-align: center; /* Mametraka eo afovoany ireo singa fototra */
+            border: none; /* Manala ny sisiny default */
+            margin-top: 2rem; /* Elanelana ambony */
+            margin-bottom: 2rem; /* Elanelana ambany */
+        }
+
+        h2 { /* Novaina ho h2 satria h3 no ao anatiny raha misy card-header */
+            font-size: 2.2rem; /* Lohateny lehibe kokoa */
+            color: #28a745; /* Maitso mamiratra */
+            margin-bottom: 1.8rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fanaingoana ho an'ny saha form Django izay ateraky ny form.as_p na ampiasaina manualy */
+        form .mb-3 { /* Bootstrap class for margin-bottom */
+            margin-bottom: 1.5rem; /* Elanelana eo anelanelan'ny saha form */
+            text-align: left; /* Manampy labels sy inputs ho any amin'ny ankavia */
+        }
+
+        form label {
+            display: block; /* Mampiseho labels amin'ny sakan'ny tsipika feno */
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"],
+        form input[type="number"], /* Nampiana ho an'ny 'taona_asa' sy 'laharana' */
+        form input[type="file"], /* Nampiana ho an'ny 'sary' */
+        form textarea { /* Nampiana ho an'ny 'momba' */
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            color: #333;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box; /* Zava-dehibe mba tsy hiitatra ny padding amin'ny sakany */
+        }
+
+        form input[type="text"]:focus,
+        form input[type="email"]:focus,
+        form input[type="password"]:focus,
+        form input[type="number"]:focus,
+        form input[type="file"]:focus,
+        form textarea:focus {
+            border-color: #28a745; /* Sisiny maitso rehefa mifantoka */
+            box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Fahazavana maitso rehefa mifantoka */
+            outline: none;
+        }
+
+        .form-text { /* Fanaingoana ho an'ny form-text Bootstrap */
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 0.25rem;
+            text-align: left;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745; /* Maitso mamiratra ho an'ny bokotra */
+            color: white;
+            font-weight: 600;
+            padding: 0.9rem 1.8rem;
+            border: none;
+            border-radius: 25px; /* Bokotra boribory */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin-top: 1.5rem; /* Elanelana ambony ny bokotra */
+            width: 100%; /* Sakan'ny bokotra feno */
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838; /* Maitso maizina kokoa rehefa apetraka ny totozy */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fanaingoana hadisoana form Django */
+        ul.errorlist { /* Specificity ho an'ny errorlist Django */
+            color: #dc3545; /* Mena ho an'ny hadisoana */
+            list-style-type: none;
+            padding: 0;
+            margin-top: -1rem; /* Ampifanaraho raha ilaina mba hirindra amin'ny saha */
+            margin-bottom: 0.5rem;
+            font-size: 0.9em;
+            text-align: left;
+        }
+        
+        /* Fanaingoana hafatra diso ankapobeny (non-field errors) */
+        .non-field-errors {
+            color: #dc3545; /* Mena ho an'ny hadisoana */
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 1rem;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        .login-link { /* Nomenarana vaovao avy amin'ny .mt-3.text-center */
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1em;
+            color: #555;
+        }
+
+        .login-link a {
+            color: #16a085; /* Maitso ho an'ny rohy */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .login-link a:hover {
+            color: #218838; /* Maitso maizina kokoa rehefa apetraka ny totozy */
+            text-decoration: underline;
+        }
+        
+        /* Media Queries ho an'ny fitaovana kely (Responsive Design) */
+        @media (max-width: 768px) {
+            .registration-card {
+                padding: 1.8rem;
+                margin: 15px; /* Ampiana marge amin'ny efijery kely kokoa */
+            }
+            h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            button[type="submit"] {
+                padding: 0.8rem 1.5rem;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    {# Ny fizarana navbar dia esorina mba hifantohana amin'ny form #}
+    {# Raha mila ny navbar ianao dia esory ny comment-ny ary ampidiro ny HTML eto ambany #}
+    {# <nav class="navbar navbar-expand-lg navbar-dark bg-success"> ... </nav> #}
+
+    <div class="registration-card">
+        <h2 class="text-center">Fisoratana ho Mpitsabo</h2>
+        
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {% if form.non_field_errors %} {# Asehoy misaraka ny non-field errors #}
+                <ul class="non-field-errors">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {# Atombohy eto ny fanaovana loop ny saha form, na azonao atao ny manampy azy tsirairay #}
+            {# Nampiasa input sy label manualy ianao, ka hampiasa izany aho ary hampiana ny error messages #}
+            
+            <div class="mb-3">
+                <label for="{{ form.username.id_for_label }}" class="form-label">Anarana fidirana*</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.username.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.password.id_for_label }}" class="form-label">Tenimiafina*</label>
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.password.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.email.id_for_label }}" class="form-label">Mailaka*</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.email.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.anarana.id_for_label }}" class="form-label">Anarana feno*</label>
+                {{ form.anarana }}
+                {% if form.anarana.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.anarana.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.laharana.id_for_label }}" class="form-label">Laharana*</label>
+                {{ form.laharana }}
+                <div class="form-text">Laharana ofisialy ho an'ny mpitsabo</div>
+                {% if form.laharana.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.laharana.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.taona_asa.id_for_label }}" class="form-label">Taona niasana</label>
+                {{ form.taona_asa }}
+                 {% if form.taona_asa.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.taona_asa.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.sary.id_for_label }}" class="form-label">Sary</label>
+                {{ form.sary }}
+                 {% if form.sary.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.sary.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.momba.id_for_label }}" class="form-label">Momba anao</label>
+                {{ form.momba }}
+                 {% if form.momba.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.momba.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100">Hisoratra anarana</button>
+        </form>
+        
+        <div class="login-link">
+            Efa manana kaonty? <a href="{% url 'fidirana_mpitsabo' %}">Midira eto</a>
+        </div>
+    </div>
+
+    {# Global Footer - Azonao atao ny manao ity ho Django include template #}
+    {# <footer class="site-footer"> <p>© 2025 Fahasalamana sy Fitsaboana Nentim-paharazana</p> </footer> #}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

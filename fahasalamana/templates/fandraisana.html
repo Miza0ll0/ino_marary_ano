@@ -5,232 +5,504 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fahasalamana sy Fitsaboana Nenti-Paharazana</title>
     <style>
-        /* Fanohanana voalohany */
-        * {
+        /* Fomban'ny Vatana sy Fototra */
+        body {
+            font-family: 'Inter', sans-serif; /* Nampiasaina ny Inter ho an'ny endrika maoderina */
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            background-color: #f8fbfd;
+            color: #333;
         }
 
-        /* Loharanon-dasi'ny pejy */
-        body {
-            background-color: #ecf0f1;
-            color: #2c3e50;
-            line-height: 1.6;
-        }
-
-        /* Loham-boambirano */
-        .loham-boambirano {
-            background-color: #1abc9c;
+        .loham-pejy { /* header */
+            background-color: #28a745;
             color: white;
-            padding: 1rem;
+            padding: 1.5rem 0;
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 6px solid #218838;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        /* Sakafo ho an'ny navigasiona */
-        .sakafo-navigasiona {
-            background-color: #16a085;
-            padding: 0.5rem;
+        .loham-pejy h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .sakafo-navigasiona { /* nav */
+            background-color: #218838;
+            padding: 0.8rem 0;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 99;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .sakafo-navigasiona ul { /* Nampiana ul */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .sakafo-navigasiona li { /* Nampiana li */
+            margin: 0 15px;
         }
 
         .sakafo-navigasiona a {
             color: white;
             text-decoration: none;
-            margin: 0 1rem;
-            padding: 0.5rem;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            margin: 0 1.2rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.95em;
+            white-space: nowrap;
         }
 
         .sakafo-navigasiona a:hover {
-            background-color: #1abc9c;
+            background-color: #1e7e34;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Fizarana fototra */
-        .fizarana-fototra {
-            padding: 2rem;
+        .votoaty-lehibe { /* main section */
+            padding: 3rem 2rem;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 30px auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Loham-baventy */
-        .loham-baventy {
+        .fampidirana { /* introduction section */
             text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        /* Karazan-tsombin'ny fitsaboana */
-        .karazana-fitsaboana {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
             margin-bottom: 3rem;
         }
 
-        .kartely-fitsaboana {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+        .fampidirana h2 {
+            font-size: 2.2em;
+            color: #28a745;
+            margin-bottom: 0.8rem;
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
         }
 
-        .kartely-fitsaboana:hover {
-            transform: translateY(-5px);
+        .fampidirana p {
+            font-size: 1.1em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .sary-fitsaboana {
+        .karazany-fitsaboana,
+        .sosokevitra-anatiny { /* grid for cards and suggestions */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Namboarina ny min-width */
+            gap: 2.5rem;
+            margin-bottom: 3.5rem;
+            justify-content: center;
+        }
+
+        .karatra-fitsaboana { /* individual card (for treatment types and suggestions) */
+            background: linear-gradient(135deg, #e6ffed 0%, #ffffff 100%);
+            border-radius: 15px;
+            overflow: hidden; /* Ensures content doesn't spill out */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid #d4edda;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            height: 100%; /* Mba hahatonga ny karatra ho mitovy haavo */
+        }
+
+        .karatra-fitsaboana a { /* Link inside card */
+            text-decoration: none;
+            color: inherit;
+            display: flex; /* Mampiasa flex mba handaminana ny votoaty mitsangana */
+            flex-direction: column;
+            height: 100%;
+            padding-bottom: 1.5rem;
+        }
+
+        .karatra-fitsaboana:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .sary-karatra {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
-        }
-
-        .fanoritry-kartely {
-            padding: 1rem;
-        }
-
-        .lohateny-kartely {
-            color: #16a085;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Fizarana momba ny fitsaboana */
-        .fizarana-fitsaboana {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        /* Fizarana mpandray hafatra */
-        .fizarana-hafatra {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .inona-anontanianao {
-            width: 100%;
-            padding: 0.75rem;
+            border-bottom: 1px solid #eee;
             margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
         }
 
-        .bokotra-maniraka {
-            background: #1abc9c;
+        .votoaty-karatra { /* card content */
+            padding: 0 1.5rem;
+            flex-grow: 1; /* Mamela ny votoaty handray ny toerana misy */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Manome toerana afovoany mitsangana */
+        }
+
+        .lohateny-karatra { /* card title */
+            color: #28a745;
+            margin-bottom: 0.75rem;
+            font-size: 1.8em;
+            font-weight: 700;
+            text-align: center;
+            white-space: normal; /* Avelao hiova tsipika ny lohateny */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .votoaty-karatra p {
+            font-size: 1.05em;
+            color: #666;
+            text-align: center;
+            white-space: normal; /* Avelao hiova tsipika ny paragrafy */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Mametraka ho andalana 3 */
+            -webkit-box-orient: vertical;
+        }
+
+        /* Fizarana momba ny fitsaboana sy hafatra */
+        .fizarana-lohahevitra,
+        .fizarana-hafatra {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .fizarana-lohahevitra h2,
+        .fizarana-hafatra h2,
+        .fizarana-sosokevitra h2 { /* Ho an'ny lohateny sosokevitra */
+            font-size: 2em;
+            color: #28a745;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .fizarana-lohahevitra p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .faritra-soratra { /* textarea */
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: vertical;
+            font-size: 1em;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .bokotra-alefa { /* submit button */
+            background: #28a745;
             color: white;
             border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
+            padding: 1rem 2rem;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1.1em;
+            font-weight: 600;
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
         }
 
-        .bokotra-maniraka:hover {
-            background: #16a085;
+        .bokotra-alefa:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Tongotra */
-        .tongotra {
-            background: #16a085;
+        .tongony { /* footer */
+            background: #218838;
             color: white;
             text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
+            padding: 2.5rem 0;
+            margin-top: 3rem;
+            font-size: 0.95em;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        /* Adaptasiona ho an'ny finday */
+        /* Fomban'ny rohy fisoratana/fidirana ivelan'ny nav */
+        .fitoeran-rohy-fidirana {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        .fitoeran-rohy-fidirana a {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+        }
+
+        .fitoeran-rohy-fidirana a:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fomban'ny hafatra fandraisana sy bokotra hivoaka */
+        .fitoeran-mombamomba-mpampiasa {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .fitoeran-mombamomba-mpampiasa p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .fitoeran-mombamomba-mpampiasa form button {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+        }
+
+        .fitoeran-mombamomba-mpampiasa form button:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fizarana Sosokevitra */
+        .fizarana-sosokevitra {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-top: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Media Queries ho an'ny fitaovana kely */
         @media (max-width: 768px) {
-            .karazana-fitsaboana {
-                grid-template-columns: 1fr;
+            .votoaty-lehibe {
+                padding: 1.5rem;
+                margin: 15px auto;
             }
-            
-            .sakafo-navigasiona {
-                display: flex;
+            .loham-pejy h1 {
+                font-size: 2em;
+            }
+            .sakafo-navigasiona ul { /* Namboarina ul */
                 flex-direction: column;
+                align-items: center;
             }
-            
+            .sakafo-navigasiona li { /* Namboarina li */
+                margin: 0.4rem 0;
+            }
             .sakafo-navigasiona a {
-                margin: 0.25rem 0;
+                padding: 0.6rem 1rem;
+                font-size: 0.9em;
+            }
+            .fampidirana h2 {
+                font-size: 1.8em;
+            }
+            .fampidirana p {
+                font-size: 1em;
+            }
+            .karazany-fitsaboana,
+            .sosokevitra-anatiny {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .karatra-fitsaboana {
+                width: 90%;
+                margin: 0 auto;
+            }
+            .sary-karatra {
+                height: 200px;
+            }
+            .votoaty-karatra {
+                padding: 1rem;
+            }
+            .lohateny-karatra {
+                font-size: 1.5em;
+            }
+            .fizarana-lohahevitra,
+            .fizarana-hafatra,
+            .fizarana-sosokevitra {
+                padding: 1.5rem;
+            }
+            .fizarana-lohahevitra h2,
+            .fizarana-hafatra h2,
+            .fizarana-sosokevitra h2 {
+                font-size: 1.5em;
+            }
+            .bokotra-alefa {
+                font-size: 1em;
+                padding: 0.8rem 1.5rem;
+            }
+            .fitoeran-rohy-fidirana a,
+            .fitoeran-mombamomba-mpampiasa form button {
+                padding: 8px 15px;
+                font-size: 0.9em;
             }
         }
     </style>
 </head>
 <body>
-    <header class="loham-boambirano">
+    <header class="loham-pejy">
         <h1>Fahasalamana sy Fitsaboana Nenti-Paharazana</h1>
     </header>
 
     <nav class="sakafo-navigasiona">
-        <a href="#">Fandraisana</a>
-        <a href="#">Karazana Fitsaboana</a>
-        <a href="#">Mpitsabo</a>
-        <a href="#">Fanamarihana</a>
+        <ul> {# Nampiana ul #}
+            <li><a href="{% url 'fandraisana' %}">Fandraisana</a></li>
+            <li><a href="{% url 'indexa' %}">Boty Miresaka</a></li>
+            <li><a href="{% url 'zavamaniry_list' %}">Karazana Fitsaboana</a></li> {# Namboarina ny rohy #}
+            <li><a href="{% url 'aretina_list' %}">Aretina</a></li> {# Nampiana rohy #}
+            <li><a href="{% url 'fanafody_list' %}">Fanafody</a></li> {# Nampiana rohy #}
+            {% if user.is_authenticated %}
+                {% if user.mpitsabo %} {# Mampiasa user.mpitsabo raha toa ka OneToOneField #}
+                    <li><a href="{% url 'mpampiasa_list_for_mpitsabo' %}">Mpampiasa</a></li>
+
+                {% else %}
+                    <li><a href="{% url 'mpitsabo_list_for_mpampiasa' %}">Mpitsabo</a></li>
+                {% endif %}
+            {% endif %}
+        </ul> {# Nofaranana ul #}
     </nav>
 
-    <main class="fizarana-fototra">
-        <section class="loham-baventy">
+    <main class="votoaty-lehibe">
+        <section class="fampidirana">
             <h2>Tongasoa eto amin'ny sehatry ny fahasalamana nentim-paharazana</h2>
-            <p>Ny fomba sy fanomezana fitsaboana avy amin'ny razantsika no ahitana ny vahaolana ho an'ny aretina maro</p>
+            <p>Ny fomba sy fanomezana fitsaboana avy amin'ny razantsika no ahitana ny vahaolana ho an'ny aretina maro.</p>
         </section>
 
         <section>
             <h2 style="margin-bottom: 1rem;">Karazana Fitsaboana</h2>
-            <div class="karazana-fitsaboana">
-                <div class="kartely-fitsaboana">
-                    <img src="https://placehold.co/600x400" alt="Zava-maniry malagasy misy ravina maitso sy voninkazo fotsy" class="sary-fitsaboana">
-                    <div class="fanoritry-kartely">
-                        <h3 class="lohateny-kartely">Fitsaboana amin'ny zava-maniry</h3>
-                        <p>Fampiasana ny zava-maniry azo antoka sy nahandro araka ny fomba nentim-paharazana</p>
+            <div class="karazany-fitsaboana">
+                <a href="{% url 'zavamaniry_list' %}">
+                    <div class="karatra-fitsaboana">
+                        <img src="https://placehold.co/600x400/28a745/ffffff?text=Zava-maniry" alt="Zava-maniry malagasy misy ravina maitso sy voninkazo fotsy" class="sary-karatra">
+                        <div class="votoaty-karatra">
+                            <h3 class="lohateny-karatra">Zava-maniry</h3>
+                            <p>Fampiasana ny zava-maniry azo antoka sy nahandro araka ny fomba nentim-paharazana.</p>
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="kartely-fitsaboana">
-                    <img src="https://placehold.co/600x400" alt="Mpitsabo nentim-paharazana manao fanorana amin'ny tanana eo amin'ny lohan'ny marary" class="sary-fitsaboana">
-                    <div class="fanoritry-kartely">
-                        <h3 class="lohateny-kartely">Fanomanana ny vatana</h3>
-                        <p>Fomba tradisionaly amin'ny fanasitranana ny vatana sy fanarenana ny hery</p>
+                <a href="{% url 'aretina_list' %}">
+                    <div class="karatra-fitsaboana">
+                        <img src="https://placehold.co/600x400/007bff/ffffff?text=Aretina" alt="Mpitsabo nentim-paharazana manao fanorana amin'ny tanana eo amin'ny lohan'ny marary" class="sary-karatra">
+                        <div class="votoaty-karatra">
+                            <h3 class="lohateny-karatra">Ireo aretina</h3>
+                            <p>Fomba tradisionaly amin'ny fanasitranana ny vatana sy fanarenana ny hery.</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="kartely-fitsaboana">
-                    <img src="https://placehold.co/600x400" alt="Tavoahangy kely misy ranon-javatra mavo ho an'ny fitsaboana" class="sary-fitsaboana">
-                    <div class="fanoritry-kartely">
-                        <h3 class="lohateny-kartely">Ranomanitra sy menaka</h3>
-                        <p>Fampiasana ranomanitra voajanahary sy menaka manasitrana</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </section>
 
-        <section class="fizarana-fitsaboana">
+        <section class="fizarana-lohahevitra">
             <h2 style="margin-bottom: 1rem;">Inona ny fitsaboana nentim-paharazana?</h2>
             <p>Ny fitsaboana nentim-paharazana dia ny fomba efa nisy nandritra ny taonarivo, nolovana tamin'ny taranaka maro, ary mifototra amin'ny fahalalana momba ny zava-maniry manasitrana, ny fanorana, ary ny antsipiriany momba ny fifandraisana eo amin'ny vatana sy ny fanahy.</p>
             <p>Amin'ny fomba fitsaboana nentim-paharazana, ny marary dia jerena ho iray manontolo, fa tsy ny aretina irery ihany.</p>
         </section>
 
+        ---
+
+        <section class="fizarana-sosokevitra">
+            <h2>Sosokevitra ho anao</h2>
+            <div class="sosokevitra-anatiny">
+                {% for sosokevitra in random_sosokevitra %}
+                <a href="{% url 'sosokevitra_detail' sosokevitra.pk %}">
+                    <div class="karatra-fitsaboana">
+                        {% if sosokevitra.sary %}
+                            <img src="{{ sosokevitra.sary.url }}" alt="{{ sosokevitra.lohateny }}" class="sary-karatra">
+                        {% else %}
+                            <img src="https://placehold.co/600x400/cccccc/ffffff?text=Tsy+misy+sary" alt="Tsy misy sary" class="sary-karatra">
+                        {% endif %}
+                        <div class="votoaty-karatra">
+                            <h3 class="lohateny-karatra">{{ sosokevitra.lohateny }}</h3>
+                            <p>{{ sosokevitra.ambara|truncatechars:100 }}</p> {# Haneho ampahany fotsiny #}
+                        </div>
+                    </div>
+                </a>
+                {% empty %}
+                    <p>Mbola tsy misy sosokevitra azo aseho amin'izao fotoana izao.</p>
+                {% endfor %}
+            </div>
+        </section>
+
         <section class="fizarana-hafatra">
-            <h2 style="margin-bottom: 1rem;">Emetra hafatra amintsika</h2>
-            <form>
-                <input type="text" placeholder="Anaranao" class="inona-anontanianao">
-                <input type="email" placeholder="Mailaka" class="inona-anontanianao">
-                <textarea placeholder="Safidy na fanontaniana" class="inona-anontanianao" rows="5"></textarea>
-                <button type="submit" class="bokotra-maniraka">Maniraka</button>
+            <h2>Mifandray aminay</h2>
+            <form action="{% url 'pejy_hafatra' %}" method="post">
+                {% csrf_token %}
+                <textarea class="faritra-soratra" placeholder="Soraty eto ny hafatrao..."></textarea>
+                <button type="submit" class="bokotra-alefa">Alefa</button>
             </form>
         </section>
     </main>
 
-    <footer class="tongotra">
-        <p>© 2023 Fahasalamana sy Fitsaboana Nenti-Paharazana. Anarana rehetra voaaro.</p>
+    {% if not user.is_authenticated %}
+        <div class="fitoeran-rohy-fidirana">
+            <a href="{% url 'fidirana_mpampiasa' %}">Hiditra (Mpampiasa)</a>
+            <a href="{% url 'fisoratana_mpampiasa' %}">Hisoratra (Mpampiasa)</a>
+            <a href="{% url 'fidirana_mpitsabo' %}">Hiditra (Mpitsabo)</a>
+            <a href="{% url 'fisoratana_mpitsabo' %}">Hisoratra (Mpitsabo)</a>
+        </div>
+    {% endif %}
+    {% if user.is_authenticated %}
+        {% if user.is_mpitsabo %}
+            <div class="fitoeran-mombamomba-mpampiasa">
+                <p>Tongasoa, Dr. {{ user.username }}!</p>
+                <form action="{% url 'deconnexion' %}" method="post">
+                    {% csrf_token %} 
+                    <button type="submit">Hivoaka (Mpitsabo)</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="fitoeran-mombamomba-mpampiasa">
+                <p>Tongasoa, {{ user.username }}!</p>
+                <form action="{% url 'deconnexion' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Hivoaka</button>
+                </form>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <footer class="tongony">
+        <p>© 2023 Fahasalamana sy Fitsaboana Nentim-Paharazana. Zo rehetra voaaro.</p>
     </footer>
 </body>
 </html>

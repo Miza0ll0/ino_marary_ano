@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="mg"> {# Changed lang to mg for Malagasy #}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisoratana anarana ho Mpampiasa</title>
+    <style>
+        /* Base Styles for consistency with other pages */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fbfd; /* Light and clean background */
+            color: #333;
+            display: flex; /* Use flexbox to center content */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            flex-direction: column; /* Stack elements vertically */
+        }
+
+        /* --- Form Container & Card Enhancements --- */
+        .registration-card { /* Renamed from .container to be more descriptive */
+            background-color: #ffffff;
+            padding: 2.5rem; /* More internal padding */
+            border-radius: 12px; /* Consistent rounded corners */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+            max-width: 500px; /* Optimal width for a registration form */
+            width: 90%; /* Responsive width */
+            text-align: center; /* Center main elements */
+            border: none; /* Remove default border */
+        }
+
+        h1 { /* Changed from h2 for consistency if h3 is used inside card */
+            font-size: 2.2rem; /* Larger heading */
+            color: #28a745; /* Vibrant green */
+            margin-bottom: 1.8rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Styles for Django form fields rendered by form.as_p */
+        form p {
+            margin-bottom: 1.5rem; /* Space between form fields */
+            text-align: left; /* Align labels and inputs to the left */
+        }
+
+        form label {
+            display: block; /* Make labels take full width */
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"] {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            color: #333;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="email"]:focus,
+        form input[type="password"]:focus {
+            border-color: #28a745; /* Green border on focus */
+            box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Green glow on focus */
+            outline: none;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745; /* Vibrant green for button */
+            color: white;
+            font-weight: 600;
+            padding: 0.9rem 1.8rem;
+            border: none;
+            border-radius: 25px; /* Pill-shaped button */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin-top: 1.5rem; /* Space above button */
+            width: 100%; /* Full width button */
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Django form error styles */
+        ul.errorlist { /* Specificity for Django's errorlist */
+            color: #dc3545; /* Red for errors */
+            list-style-type: none;
+            padding: 0;
+            margin-top: -1rem; /* Adjust if needed to align with field */
+            margin-bottom: 0.5rem;
+            font-size: 0.9em;
+            text-align: left;
+        }
+        
+        /* General form error messages (non-field errors) */
+        .non-field-errors {
+            color: #dc3545; /* Red for errors */
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 1rem;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1em;
+            color: #555;
+        }
+
+        .back-link a {
+            color: #16a085; /* Green for link */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #218838; /* Darker green on hover */
+            text-decoration: underline;
+        }
+        
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .registration-card {
+                padding: 1.8rem;
+                margin: 15px; /* Add some margin on smaller screens */
+            }
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            button[type="submit"] {
+                padding: 0.8rem 1.5rem;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-card">
+        <h1>Misoratra anarana ho Mpampiasa</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {% if form.non_field_errors %} {# Display non-field errors separately #}
+                <ul class="non-field-errors">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {{ form.as_p }} {# This will display all form fields, including labels and field-specific errors #}
+
+            <button type="submit">Hisoratra anarana</button>
+        </form>
+
+        <p class="back-link">Efa manana kaonty ve? <a href="{% url 'fidirana_mpampiasa' %}">Midira eto</a>.</p>
+    </div>
+</body>
+</html>

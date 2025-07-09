@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Titre par défaut{% endblock %}</title>
+    {# Ici, vous pouvez lier vos fichiers CSS communs #}
+</head>
+<body>
+
+    <main>
+        {% block content %}
+        {# C'est ici que le contenu unique de chaque page ira #}
+        {% endblock %}
+    </main>
+
+    <footer>
+        {# Votre pied de page commun à toutes les pages #}
+        <a href="{% url 'fandraisana' %}"> --Fandraisana</a>
+    </footer>
+
+    {# Ici, vous pouvez lier vos fichiers JavaScript communs #}
+</body>
+</html>

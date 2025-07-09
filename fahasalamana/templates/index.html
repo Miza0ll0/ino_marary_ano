@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <title>Boty Miresaka - Tantaran'i Madagasikara</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Couleurs du thème vert */
+        :root {
+            --primary-green: #4CAF50; /* Un vert standard et agréable */
+            --light-green: #E8F5E9;   /* Vert très clair pour les messages du bot ou le fond */
+            --dark-green: #388E3C;    /* Vert plus foncé pour les hover ou les accents */
+            --neutral-bg: #f9f9f9;    /* Fond neutre léger */
+            --text-color: #333;       /* Couleur de texte standard */
+        }
+
+        body {
+            background-color: var(--neutral-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police un peu plus moderne */
+            color: var(--text-color);
+        }
+        #chat-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 12px; /* Un peu plus arrondi */
+            padding: 30px; /* Un peu plus de padding */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Ombre plus prononcée */
+        }
+        #reponses {
+            min-height: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px; /* Espacement légèrement augmenté */
+            border-bottom: 1px solid #eee; /* Ligne plus légère */
+            padding-bottom: 15px;
+            margin-bottom: 20px; /* Marge avant la zone de saisie */
+        }
+        /* Scrollbar customisée pour une meilleure esthétique */
+        #reponses::-webkit-scrollbar {
+            width: 8px;
+        }
+        #reponses::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        #reponses::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 10px;
+        }
+        #reponses::-webkit-scrollbar-thumb:hover {
+            background: var(--dark-green);
+        }
+
+        .user-msg {
+            align-self: flex-end;
+            background-color: var(--primary-green); /* Vert principal pour l'utilisateur */
+            color: white;
+            padding: 12px 18px; /* Plus de padding */
+            border-radius: 25px 25px 5px 25px; /* Forme de bulle plus douce */
+            max-width: 75%; /* Plus large */
+            word-wrap: break-word;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Petite ombre pour les bulles */
+        }
+        .bot-msg {
+            align-self: flex-start;
+            background-color: var(--light-green); /* Vert clair pour le bot */
+            color: var(--text-color);
+            padding: 12px 18px; /* Plus de padding */
+            border-radius: 25px 25px 25px 5px; /* Forme de bulle plus douce */
+            max-width: 75%; /* Plus large */
+            word-wrap: break-word;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Petite ombre légère */
+        }
+        #input-area {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        #message {
+            flex-grow: 1;
+            padding: 12px 15px; /* Plus de padding pour le champ de saisie */
+            border-radius: 25px; /* Coins plus arrondis */
+            border: 1px solid #ccc;
+            transition: border-color 0.3s; /* Transition douce */
+        }
+        #message:focus {
+            border-color: var(--primary-green); /* Bordure verte au focus */
+            outline: none; /* Supprimer l'outline par défaut du navigateur */
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Ombre douce au focus */
+        }
+        .btn-primary { /* Style du bouton Envoyer */
+            background-color: var(--primary-green) !important; /* Force le vert */
+            border-color: var(--primary-green) !important;
+            border-radius: 25px; /* Coins plus arrondis */
+            padding: 12px 25px; /* Plus de padding */
+            font-weight: bold;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: var(--dark-green) !important;
+            border-color: var(--dark-green) !important;
+        }
+
+        /* Style pour le footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: var(--primary-green); /* Fond du footer vert */
+            color: white;
+            border-radius: 10px; /* Coins arrondis pour le footer aussi */
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        footer a {
+            color: white; /* Lien en blanc */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #d4e9d4; /* Légèrement plus clair au survol */
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container" class="shadow">
+        <h2 class="text-center mb-4">Boty Miresaka - Tantaran'i Madagasikara 🇲🇬</h2>
+        <div id="reponses"></div>
+        <div id="input-area">
+            <input type="text" id="message" class="form-control" placeholder="Apetraka eto ny fanontaniana...">
+            <button onclick="envoyerMessage()" class="btn btn-primary">Alefaso</button>
+        </div>
+    </div>
+
+    <script>
+        async function envoyerMessage() {
+            const input = document.getElementById("message");
+            const texte = input.value.trim();
+            if (!texte) return;
+
+            const chat = document.getElementById("reponses");
+            
+            // Afficher le message de l'utilisateur
+            const userMsgDiv = document.createElement('p');
+            userMsgDiv.className = 'user-msg';
+            userMsgDiv.textContent = texte;
+            chat.appendChild(userMsgDiv);
+            
+            input.value = ""; // Vider le champ de saisie
+            chat.scrollTop = chat.scrollHeight; // Faire défiler vers le bas
+
+            // Ajouter un indicateur de chargement (ex: "Boty miasa...")
+            const loadingMsgDiv = document.createElement('p');
+            loadingMsgDiv.className = 'bot-msg';
+            loadingMsgDiv.textContent = "Boty miasa..."; // "Bot en action..." en malagasy
+            loadingMsgDiv.id = 'loading-indicator';
+            chat.appendChild(loadingMsgDiv);
+            chat.scrollTop = chat.scrollHeight;
+
+            try {
+                // Utilisation de encodeURIComponent pour le message
+                const res = await fetch(`/bot/?message=${encodeURIComponent(texte)}`);
+                if (!res.ok) { // Vérifier si la réponse HTTP est OK (statut 200)
+                    throw new Error(`Erreur HTTP: ${res.status}`);
+                }
+                const data = await res.json();
+
+                // Supprimer l'indicateur de chargement
+                loadingMsgDiv.remove();
+                
+                const botMsgDiv = document.createElement('p');
+                botMsgDiv.className = 'bot-msg';
+                botMsgDiv.textContent = data.reply;
+                chat.appendChild(botMsgDiv);
+                chat.scrollTop = chat.scrollHeight;
+
+            } catch (error) {
+                // Supprimer l'indicateur de chargement même en cas d'erreur
+                if (document.getElementById('loading-indicator')) {
+                    document.getElementById('loading-indicator').remove();
+                }
+                const errorMsgDiv = document.createElement('p');
+                errorMsgDiv.className = 'bot-msg';
+                errorMsgDiv.textContent = `Misy olana tamin'ny serveur: ${error.message}. Azafady andramo indray.`;
+                chat.appendChild(errorMsgDiv);
+                chat.scrollTop = chat.scrollHeight;
+                console.error("Erreur d'envoi ou de réception:", error);
+            }
+        }
+
+        // Permet d'envoyer avec "Entrée"
+        document.getElementById("message").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                envoyerMessage();
+                event.preventDefault(); // Empêche le retour à la ligne dans le champ de saisie
+            }
+        });
+    </script>
+</body>
+<footer>
+    <a href="{% url 'fandraisana' %}">--Iverina any amin'ny Fandraisana--</a>
+</footer>
+</html>

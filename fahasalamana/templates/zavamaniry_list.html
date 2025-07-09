@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisitra Zava-maniry</title>
+    <style>
+        /* Fomban'ny Vatana sy Fototra (Body and Base Styles) */
+        body {
+            font-family: 'Inter', sans-serif; /* Nampiasaina ny Inter ho an'ny endrika maoderina */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fbfd; /* Loko maivana sy madio ho an'ny fiaviana */
+            color: #333; /* Loko maizina ho an'ny soratra */
+        }
+
+        /* Lohateny lehibe an'ny pejy */
+        .loham-pejy { /* header */
+            background-color: #28a745; /* Maitso mamiratra kokoa */
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            border-bottom: 6px solid #218838; /* Maitso maizina kokoa */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .loham-pejy h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sakafo fitetezana */
+        .sakafo-navigasiona { /* nav */
+            background-color: #218838; /* Maitso maizina kely */
+            padding: 0.8rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 99;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .sakafo-navigasiona ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .sakafo-navigasiona li {
+            margin: 0 15px;
+        }
+
+        .sakafo-navigasiona a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.2rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.95em;
+            white-space: nowrap;
+        }
+
+        .sakafo-navigasiona a:hover {
+            background-color: #1e7e34;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fizarana fototra */
+        .fizarana-fototra { /* main section */
+            padding: 3rem 2rem; /* Nalehibe kely ny padding */
+            max-width: 1200px; /* Nalehibe kely ny sakany */
+            margin: 30px auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .loham-baventy { /* introduction section */
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .loham-baventy h2 {
+            font-size: 2.2em; /* Nalehibe kely ny font-size */
+            color: #28a745;
+            margin-bottom: 0.8rem;
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .loham-baventy p {
+            font-size: 1.1em; /* Nalehibe kely ny font-size */
+            color: #555;
+            max-width: 800px; /* Nalehibe kely ny sakany */
+            margin: 0 auto;
+        }
+
+        .karazana-aretina { /* grid for cards */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Nalehibe kely ny minwidth */
+            gap: 2.5rem; /* Nalehibe kely ny gap */
+            margin-bottom: 3.5rem;
+            justify-content: center;
+        }
+
+        .kartely-aretina { /* individual card */
+            background: linear-gradient(135deg, #e6ffed 0%, #ffffff 100%);
+            border-radius: 15px; /* Nalehibe kely ny border-radius */
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Nalehibe kely ny shadow */
+            transition: transform 0.4s ease, box-shadow 0.4s ease; /* Nalehibe kely ny transition */
+            border: 1px solid #d4edda;
+            display: flex;
+            flex-direction: column;
+            text-align: center; /* Nampiana text-align center ho an'ny votoaty */
+        }
+
+        .kartely-aretina a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%; /* Mba handrakotra ny karatra manontolo */
+            padding-bottom: 1.5rem; /* Nampiana padding ambany */
+        }
+
+        .kartely-aretina:hover {
+            transform: translateY(-8px) scale(1.02); /* Nalehibe kely ny mouvement sy zoom */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25); /* Nalehibe kely ny shadow */
+        }
+
+        .sary-aretina {
+            width: 100%;
+            height: 250px; /* Nalehibe kely ny haavony */
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1rem;
+        }
+
+        .sary-aretina[style*="background:#e0e0e0"] { /* Style ho an'ny div tsy misy sary */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 1.2em; /* Nalehibe kely ny font-size */
+            background-color: #e0e0e0; /* Natao mazava kokoa */
+            height: 250px; /* Natao mitovy amin'ny sary */
+        }
+
+        .fanoritry-kartely { /* card content */
+            padding: 0 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .lohateny-kartely { /* card title */
+            color: #28a745;
+            margin-bottom: 0.75rem;
+            font-size: 1.8em;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .fanoritry-kartely p {
+            font-size: 1.05em;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Footer ambany pejy */
+        .tongotra {
+            background-color: #218838; /* Natao maitso mitovy amin'ny nav */
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0; /* Nampiana padding */
+            margin-top: 3rem;
+            font-size: 0.95em;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Media Queries ho an'ny fitaovana kely (Responsive Design) */
+        @media (max-width: 768px) {
+            .fizarana-fototra {
+                padding: 1.5rem;
+                margin: 15px auto;
+            }
+            .loham-pejy h1 {
+                font-size: 2em;
+            }
+            .sakafo-navigasiona ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .sakafo-navigasiona li {
+                margin: 5px 0;
+            }
+            .sakafo-navigasiona a {
+                font-size: 0.9em;
+                padding: 0.6rem 1rem;
+            }
+            .loham-baventy h2 {
+                font-size: 1.8em;
+            }
+            .loham-baventy p {
+                font-size: 1em;
+            }
+            .karazana-aretina {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .kartely-aretina {
+                width: 90%;
+                margin: 0 auto;
+            }
+            .sary-aretina, .sary-aretina[style*="background:#e0e0e0"] {
+                height: 200px;
+            }
+            .lohateny-kartely {
+                font-size: 1.5em;
+            }
+            .fanoritry-kartely p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="loham-pejy">
+        <h1>Lisitra Zava-maniry</h1>
+    </header>
+
+    <nav class="sakafo-navigasiona">
+        <ul> {# Nampiana ul #}
+            <li><a href="{% url 'fandraisana' %}">Fandraisana</a></li>
+            <li><a href="{% url 'zavamaniry_list' %}">Karazana Fitsaboana</a></li> {# Namboarina ny rohy #}
+            <li><a href="{% url 'aretina_list' %}">Aretina</a></li> {# Nampiana rohy #}
+            <li><a href="{% url 'fanafody_list' %}">Fanafody</a></li> {# Nampiana rohy #}
+            {% if user.is_authenticated %}
+                {% if user.mpitsabo %} {# Mampiasa user.mpitsabo raha toa ka OneToOneField #}
+                    <li><a href="{% url 'mpampiasa_list_for_mpitsabo' %}">Mpampiasa</a></li>
+                    <li><a href="{% url 'pejy_mpitsabo' %}">Pejy Mpitsabo</a></li> {# Nampiana rohy #}
+                {% else %}
+                    <li><a href="{% url 'mpitsabo_list_for_mpampiasa' %}">Mpitsabo</a></li>
+                {% endif %}
+            {% endif %}
+        </ul> {# Nofaranana ul #}
+    </nav>
+
+    <main class="fizarana-fototra">
+        <section class="loham-baventy">
+            <h2>Tongasoa eto amin'ny lisitry ny zava-maniry</h2>
+            <p>Jereo ny lisitry ny zava-maniry sy ny fitsaboana nentim-paharazana ho an'ny zava-maniry tsirairay.</p>
+        </section>
+
+        <section>
+            <div class="karazana-aretina">
+                {% for zavamaniry in zavamaniry_list %}
+                <div class="kartely-aretina">
+                    <a href="{% url 'zavamaniry_detail' zavamaniry.pk %}" style="text-decoration:none; color:inherit;">
+                        {% if zavamaniry.sary %}
+                            <img src="{{ zavamaniry.sary.url }}" alt="Sarin'i {{ zavamaniry.anarana }}" class="sary-aretina">
+                        {% else %}
+                            <div class="sary-aretina" style="background:#e0e0e0; display:flex; align-items:center; justify-content:center; color:#888; font-size:1.2em;">Tsy misy sary</div>
+                        {% endif %}
+                        <div class="fanoritry-kartely">
+                            <h3 class="lohateny-kartely">{{ zavamaniry.anarana }}</h3>
+                            <p>{{ zavamaniry.famaritana|default:"Tsy misy famaritana."|truncatechars:120 }}</p>
+                        </div>
+                    </a>
+                </div>
+                {% empty %}
+                <p>Tsy misy zava-maniry hita.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="tongotra">
+        <p>© 2023 Lisitra Zava-maniry. Anarana rehetra voaaro.</p>
+    </footer>
+</body>
+</html>

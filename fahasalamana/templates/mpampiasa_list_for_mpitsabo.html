@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisitry ny Mpampiasa</title>
+    <!-- Font Awesome ho an'ny icône -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Fomban'ny Vatana sy Fototra (Body and Base Styles) */
+        body {
+            font-family: 'Inter', sans-serif; /* Nampiasaina ny Inter ho an'ny endrika maoderina */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fbfd; /* Loko maivana sy madio ho an'ny fiaviana */
+            color: #333; /* Loko maizina ho an'ny soratra */
+        }
+
+        /* Lohateny lehibe an'ny pejy (Header) */
+        .loham-pejy {
+            background-color: #28a745; /* Maitso mamiratra */
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            border-bottom: 6px solid #218838; /* Sisiny maitso maizina */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Aloka */
+        }
+
+        .loham-pejy h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sakafo fitetezana (Navigation Menu) */
+        .sakafo-navigasiona {
+            background-color: #218838;
+            padding: 0.8rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 99;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .sakafo-navigasiona ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .sakafo-navigasiona li {
+            margin: 0 15px;
+        }
+
+        .sakafo-navigasiona a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.2rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.95em;
+            white-space: nowrap;
+        }
+
+        .sakafo-navigasiona a:hover {
+            background-color: #1e7e34;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Votoaty lehibe (Main Content Container) */
+        .votoaty-lehibe {
+            max-width: 900px; /* Sakany kely kokoa ho an'ny lisitra */
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .votoaty-lehibe h2 {
+            text-align: center;
+            color: #28a745;
+            font-size: 2.3em;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        /* Lisitry ny Mpampiasa (User List Styling) */
+        .lisitra-mpampiasa {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lisitra-mpampiasa li {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Manaparitaka ny singa */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .lisitra-mpampiasa li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .lisitra-mpampiasa .mpampiasa-info {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .lisitra-mpampiasa .avatar-kely {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #ccc;
+            margin-right: 15px;
+            border: 2px solid #28a745;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .lisitra-mpampiasa .anarana-mpampiasa {
+            font-size: 1.2em;
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .lisitra-mpampiasa .rohy-hafatra {
+            background-color: #4CAF50; /* Maitso manintona */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .lisitra-mpampiasa .rohy-hafatra:hover {
+            background-color: #388E3C; /* Maitso maizina kokoa */
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fomban'ny tsy misy mpampiasa */
+        .tsy-misy-mpampiasa {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            font-style: italic;
+        }
+
+        /* Ambany pejy (Footer) */
+        .tongony {
+            background: #218838;
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 3rem;
+            font-size: 0.95em;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Media Queries ho an'ny efijery kely (Responsive Design) */
+        @media (max-width: 768px) {
+            .votoaty-lehibe {
+                margin: 15px auto;
+                padding: 15px;
+            }
+            .loham-pejy h1 {
+                font-size: 2em;
+            }
+            .sakafo-navigasiona ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .sakafo-navigasiona li {
+                margin: 0.4rem 0;
+            }
+            .sakafo-navigasiona a {
+                padding: 0.6rem 1rem;
+                font-size: 0.9em;
+            }
+            .votoaty-lehibe h2 {
+                font-size: 1.8em;
+            }
+            .lisitra-mpampiasa li {
+                flex-direction: column; /* Manaparitaka mitsangana */
+                align-items: flex-start;
+                padding: 10px 15px;
+            }
+            .lisitra-mpampiasa .mpampiasa-info {
+                margin-bottom: 10px;
+            }
+            .lisitra-mpampiasa .rohy-hafatra {
+                width: 100%;
+                text-align: center;
+                padding: 8px 15px;
+            }
+            .lisitra-mpampiasa .avatar-kely {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="loham-pejy">
+        <h1>Fahasalamana sy Fitsaboana Nenti-Paharazana</h1>
+    </header>
+
+    <nav class="sakafo-navigasiona">
+        <ul>
+            <li><a href="{% url 'fandraisana' %}">Fandraisana</a></li>
+            <li><a href="{% url 'zavamaniry_list' %}">Zava-maniry</a></li>
+            <li><a href="{% url 'aretina_list' %}">Aretina</a></li>
+            <li><a href="{% url 'fanafody_list' %}">Fanafody</a></li>
+            {% if user.is_authenticated %}
+                {% if user.mpitsabo %}
+                    <li><a href="{% url 'mpampiasa_list_for_mpitsabo' %}">Mpampiasa</a></li>
+                    <li><a href="{% url 'pejy_mpitsabo' %}">Pejy Mpitsabo</a></li>
+                {% else %}
+                    <li><a href="{% url 'mpitsabo_list_for_mpampiasa' %}">Mpitsabo</a></li>
+                {% endif %}
+                <li><a href="{% url 'pejy_hafatra' %}">Hafatra</a></li>
+                <li><a href="{% url 'deconnexion' %}">Hivoaka</a></li>
+            {% else %}
+                <li><a href="{% url 'fidirana_mpampiasa' %}">Hiditra (Mpampiasa)</a></li>
+                <li><a href="{% url 'fisoratana_mpampiasa' %}">Hisoratra (Mpampiasa)</a></li>
+                <li><a href="{% url 'fidirana_mpitsabo' %}">Hiditra (Mpitsabo)</a></li>
+                <li><a href="{% url 'fisoratana_mpitsabo' %}">Hisoratra (Mpitsabo)</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <main class="votoaty-lehibe">
+        <h2>Mpampiasa izay nandefa hafatra</h2>
+        <ul class="lisitra-mpampiasa">
+            {% for mpampiasa in mpampiasa_list %}
+                <li>
+                    <div class="mpampiasa-info">
+                        {% if mpampiasa.sary %}
+                            <img src="{{ mpampiasa.sary.url }}" class="avatar-kely" alt="Sarin'i {{ mpampiasa.anarana_feno }}">
+                        {% else %}
+                            <div class="avatar-kely">
+                                {{ mpampiasa.anarana_feno.0|upper }}
+                            </div>
+                        {% endif %}
+                        <span class="anarana-mpampiasa">{{ mpampiasa.anarana_feno }}</span>
+                    </div>
+                    <a href="{% url 'hafa_hafatra' mpandray_id=mpampiasa.id %}" class="rohy-hafatra">
+                        <i class="fa-solid fa-comment-dots"></i> Hijery hafatra
+                    </a>
+                </li>
+            {% empty %}
+                <li class="tsy-misy-mpampiasa">Tsy misy mpampiasa nandefa hafatra.</li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    <footer class="tongony">
+        <p>© 2023 Fahasalamana sy Fitsaboana Nentim-Paharazana. Zo rehetra voaaro.</p>
+    </footer>
+
+</body>
+</html>

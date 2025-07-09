@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisoratana Mpampiasa</title> {# Changed title to reflect Fisoratana #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        /* Base Styles for consistency with other pages */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fbfd; /* Light and clean background */
+            color: #333;
+            display: flex; /* Use flexbox to center content */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            flex-direction: column; /* Stack elements vertically */
+        }
+
+        /* --- Custom Navbar Styles (if you decide to keep it) --- */
+        /* Currently removed to focus on form, but uncomment and include if needed */
+        /*
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 600;
+            margin: 0 0.8rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .navbar-text {
+            color: #e0e0e0 !important;
+            margin-right: 1rem;
+        }
+        */
+
+        /* --- Form Container & Card Enhancements --- */
+        .card {
+            border-radius: 12px; /* Consistent rounded corners */
+            overflow: hidden; /* Ensures internal elements respect border-radius */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+            border: none; /* Remove default Bootstrap border */
+        }
+
+        .card-header {
+            background-color: #28a745 !important; /* Vibrant green for header */
+            border-bottom: 3px solid #218838; /* Darker green border */
+            padding: 1.5rem 1rem; /* More padding */
+        }
+
+        .card-header h3 {
+            margin-bottom: 0;
+            font-size: 2.2rem; /* Larger heading */
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body {
+            padding: 2.5rem; /* More internal padding */
+        }
+
+        /* Styles for Django form fields rendered by form.as_p */
+        .card-body p {
+            margin-bottom: 1.5rem; /* Space between form fields */
+            text-align: left; /* Align labels and inputs to the left */
+        }
+
+        .card-body label {
+            display: block; /* Make labels take full width */
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .card-body input[type="text"],
+        .card-body input[type="email"],
+        .card-body input[type="password"] {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            color: #333;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-body input[type="text"]:focus,
+        .card-body input[type="email"]:focus,
+        .card-body input[type="password"]:focus {
+            border-color: #28a745; /* Green border on focus */
+            box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Green glow on focus */
+            outline: none;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745 !important; /* Override Bootstrap green */
+            border-color: #28a745 !important; /* Override Bootstrap green */
+            color: white;
+            font-weight: 600;
+            padding: 0.9rem 1.8rem;
+            border-radius: 25px; /* Pill-shaped button */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin-top: 1.5rem; /* Space above button */
+            width: 100%; /* Full width button */
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838 !important; /* Darker green on hover */
+            border-color: #218838 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-footer {
+            background-color: #f0fdf4; /* Lighter green background for footer */
+            border-top: 1px solid #e0e0e0;
+            padding: 1.5rem;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .card-footer a {
+            color: #16a085; /* Green for link */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .card-footer a:hover {
+            color: #218838; /* Darker green on hover */
+            text-decoration: underline;
+        }
+
+        /* Django form error styles */
+        .errorlist {
+            color: #dc3545; /* Red for errors */
+            list-style-type: none;
+            padding: 0;
+            margin-top: -1rem; /* Adjust if needed to align with field */
+            margin-bottom: 0.5rem;
+            font-size: 0.9em;
+            text-align: left;
+        }
+        
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .card-body {
+                padding: 1.8rem;
+            }
+            .card-header h3 {
+                font-size: 1.8rem;
+            }
+            button[type="submit"] {
+                padding: 0.8rem 1.5rem;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    {# The navbar section is commented out to focus on the form as requested #}
+    {# If you need the navbar, uncomment the section above and the HTML below #}
+    {# <nav class="navbar navbar-expand-lg navbar-dark bg-success"> ... </nav> #}
+
+    <div class="container mt-5 mb-5"> {# Added mb-5 for bottom margin if no global footer #}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="text-center">Fisoratana ho an'ny Mpampiasa</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }} {# This renders all form fields as <p> tags #}
+                            <button type="submit">Hisoratra anarana</button>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        Efa manana kaonty ve? <a href="{% url 'fidirana_mpampiasa' %}">Midira</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# <footer class="site-footer"> <p>© 2025 Fahasalamana sy Fitsaboana Nentim-paharazana</p> </footer> #}
+</body>
+</html>

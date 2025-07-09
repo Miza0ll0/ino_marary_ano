@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ aretina.anarana }}</title>
+    <style>
+        /* Fomban'ny Vatana sy Fototra (Body and Base Styles) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font maoderina kokoa */
+            line-height: 1.7; /* Line height kely kokoa */
+            margin: 0;
+            padding: 0;
+            background-color: #f8fbfd; /* Loko maivana sy madio ho an'ny fiaviana */
+            color: #333; /* Loko maizina ho an'ny soratra */
+        }
+
+        .loham-boambirano { /* header */
+            background-color: #28a745; /* Maitso mamiratra kokoa */
+            color: white;
+            padding: 1.5rem 0; /* Padding lehibe kokoa */
+            text-align: center;
+            border-bottom: 6px solid #218838; /* Maitso maizina kokoa ho an'ny sisiny */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Aloka lehibe kokoa */
+            position: sticky; /* Mba hijanona eo ambony rehefa scroll */
+            top: 0;
+            z-index: 100;
+        }
+
+        .loham-boambirano h1 {
+            margin: 0;
+            font-size: 2.8em; /* Lehibe kokoa */
+            letter-spacing: 1px; /* Elanelana kely kokoa eo anelanelan'ny litera */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Aloky ny soratra */
+        }
+
+        .sakafo-navigasiona { /* nav */
+            background-color: #218838; /* Maitso maizina kely */
+            padding: 0.8rem 0; /* Padding bebe kokoa */
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 99;
+        }
+
+        .sakafo-navigasiona a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.2rem; /* Elanelana lehibe kokoa */
+            padding: 0.7rem 1.2rem; /* Padding bebe kokoa ho an'ny bokotra */
+            border-radius: 25px; /* Bokotra boribory kokoa */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Fiovana malefaka */
+            font-weight: 600; /* Hateza soratra */
+            text-transform: uppercase; /* Soratra lehibe daholo */
+            font-size: 0.95em; /* Kely kokoa noho ny teo aloha */
+        }
+
+        .sakafo-navigasiona a:hover {
+            background-color: #1e7e34; /* Loko maitso maizina kokoa rehefa apetraka ny totozy */
+            transform: translateY(-2px); /* Miakatra kely rehefa apetraka ny totozy */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .fizarana-fototra { /* main section */
+            padding: 3rem 2rem; /* Padding lehibe kokoa */
+            max-width: 900px; /* Largeur optimale ho an'ny antsipiriany */
+            margin: 30px auto; /* Elanelana ambony sy ambany */
+            background-color: #ffffff; /* Fiaviana fotsy madio */
+            border-radius: 12px; /* Sisiny boribory kokoa */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Aloka lehibe kokoa */
+        }
+
+        /* Ny style ho an'ny sary aretina */
+        .aretina-img {
+            width: 100%;
+            max-height: 400px; /* Havoana lehibe kokoa ho an'ny sary */
+            object-fit: cover;
+            border-radius: 12px; /* Sisiny boribory kokoa */
+            margin-bottom: 2.5rem; /* Marge ambany lehibe kokoa */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Aloka manodidina ny sary */
+            display: block;
+            border: 1px solid #d4edda; /* Sisiny kely */
+        }
+
+        /* Ny style ho an'ny placeholder sary aretina */
+        .aretina-img.placeholder-img {
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 1.2em;
+            min-height: 250px; /* Haavo kely indrindra ho an'ny toerana misy sary */
+            border: 1px dashed #ccc; /* Sisiny misy tsipika ho an'ny toerana tsy misy sary */
+            text-align: center;
+        }
+
+        .aretina-title {
+            font-size: 2.5rem; /* Lehibe kokoa */
+            color: #28a745; /* Maitso mamiratra */
+            margin-bottom: 1.5rem; /* Marge ambany lehibe kokoa */
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .aretina-desc {
+            font-size: 1.15rem; /* Kely kokoa noho ny teo aloha, fa lehibe kokoa ho an'ny votoaty */
+            color: #444;
+            margin-bottom: 3rem; /* Marge ambany lehibe kokoa */
+            text-align: justify; /* Atoro ny soratra */
+        }
+
+        .loham-zava {
+            color: #28a745; /* Maitso mamiratra */
+            margin-bottom: 1.5rem; /* Marge ambany lehibe kokoa */
+            margin-top: 2.5rem; /* Marge ambony lehibe kokoa */
+            font-size: 1.8rem; /* Lehibe kokoa */
+            font-weight: 600;
+            border-bottom: 2px solid #e0e0e0; /* Tsipika ambany */
+            padding-bottom: 0.5rem;
+        }
+
+        .zava-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .zava-list li {
+            background: #f0fdf4; /* Fiaviana maitso malefaka */
+            margin-bottom: 1.2rem; /* Marge ambany lehibe kokoa */
+            padding: 1rem 1.5rem; /* Padding lehibe kokoa */
+            border-radius: 10px; /* Sisiny boribory kokoa */
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05); /* Aloka malefaka */
+            color: #2c3e50;
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transition roa */
+        }
+
+        .zava-list li:hover {
+            transform: translateX(5px); /* Mihetsika kely rehefa apetraka ny totozy */
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .zava-list li a {
+            text-decoration: none;
+            color: #16a085; /* Maitso maizina */
+            font-weight: bold;
+            font-size: 1.15em; /* Lehibe kely kokoa */
+            display: block; /* Mba hahafeno ny sakany manontolo */
+            margin-bottom: 0.3em;
+        }
+
+        .zava-list li a:hover {
+            text-decoration: underline;
+        }
+
+        .zava-list li .famaritana-zava { /* Style ho an'ny famaritana zava-maniry */
+            font-size: 0.95em;
+            color: #555;
+            display: block;
+        }
+
+        .tongotra {
+            background: #218838; /* Maitso maizina */
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0; /* Padding lehibe kokoa */
+            margin-top: 3rem; /* Elanelana ambony lehibe kokoa */
+            font-size: 0.95em;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.15); /* Aloka ambony */
+        }
+
+        /* Media Queries ho an'ny fitaovana kely (Responsive Design) */
+        @media (max-width: 768px) {
+            .fizarana-fototra {
+                padding: 1.5rem;
+                margin: 15px auto;
+            }
+            .loham-boambirano h1 {
+                font-size: 2em;
+            }
+            .sakafo-navigasiona {
+                flex-direction: column;
+                padding: 0.5rem 0;
+            }
+            .sakafo-navigasiona a {
+                margin: 0.4rem 0;
+                padding: 0.6rem 1rem;
+                font-size: 0.9em;
+            }
+            .aretina-img, .aretina-img.placeholder-img {
+                max-height: 250px; /* Havoana kely kokoa amin'ny finday */
+                margin-bottom: 1.5rem;
+            }
+            .aretina-title {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+            .aretina-desc {
+                font-size: 1em;
+                margin-bottom: 2rem;
+            }
+            .loham-zava {
+                font-size: 1.5rem;
+                margin-top: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            .zava-list li {
+                padding: 0.8rem 1rem;
+                margin-bottom: 1rem;
+            }
+            .zava-list li a {
+                font-size: 1em;
+            }
+            .zava-list li .famaritana-zava {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="loham-boambirano">
+    <h1>Fahasalamana sy Fitsaboana Nenti-Paharazana</h1>
+</header>
+
+<nav class="sakafo-navigasiona">
+    <a href="{% url 'fandraisana' %}">Fandraisana</a>
+    <a href="{% url 'zavamaniry_list' %}">Zava-maniry</a>
+    <a href="{% url 'mpitsabo_list_for_mpampiasa' %}">Mpitsabo</a>
+    <a href="{% url 'aretina_list' %}">Aretina</a> {# Nampiana rohy mankany amin'ny lisitry ny aretina #}
+</nav>
+
+<main class="fizarana-fototra">
+    {% if aretina.sary %}
+        <img src="{{ aretina.sary.url }}" alt="Sarin'ny {{ aretina.anarana }}" class="aretina-img">
+    {% else %}
+        <div class="aretina-img placeholder-img">Tsy misy sary ho an'ity aretina ity</div>
+    {% endif %}
+
+    <h2 class="aretina-title">{{ aretina.anarana }}</h2>
+    <div class="aretina-desc">{{ aretina.famaritana }}</div>
+
+    <div>
+        <div>
+            <div class="loham-zava">Zava-maniry afaka mitsabo an'ity :</div>
+            <ul class="zava-list">
+                {% for zava in aretina.zava_maniry_tsaboina.all %}
+                    <li style="display: flex; align-items: center;">
+                        {% if zava.sary %}
+                            <img src="{{ zava.sary.url }}" alt="Sarin'i {{ zava.anarana }}" style="width:60px; height:60px; object-fit:cover; border-radius:8px; margin-right:1rem; border:1px solid #d4edda;">
+                        {% else %}
+                            <div style="width:60px; height:60px; background:#e0e0e0; display:flex; align-items:center; justify-content:center; color:#888; font-size:0.75em; border-radius:8px; margin-right:1rem; border:1px dashed #ccc;">
+                                Tsy misy sary
+                            </div>
+                        {% endif %}
+                        <div>
+                            <a href="{% url 'zavamaniry_detail' zava.id %}">{{ zava.anarana }}</a>
+                            <span class="famaritana-zava">{{ zava.famaritana|truncatechars:120 }}</span>
+                        </div>
+                    </li>
+                {% empty %}
+                    <li>Tsy misy zava-maniry afaka mitsabo an'ity aretina ity.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+    </div>
+</main>
+
+<footer class="tongotra">
+    <p>© 2025 Fahasalamana sy Fitsaboana Nenti-Paharazana</p>
+</footer>
+
+</body>
+</html>

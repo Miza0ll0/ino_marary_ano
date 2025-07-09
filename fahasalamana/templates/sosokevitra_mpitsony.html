@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ sosokevitra.lohateny }} - Sosokevitra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .votoaty-sosokevitra {
+            background: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .votoaty-sosokevitra h1 {
+            color: #28a745;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        .votoaty-sosokevitra p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .sary-sosokevitra {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .daty {
+            font-size: 0.9em;
+            color: #777;
+            text-align: right;
+            margin-top: 20px;
+        }
+        .iverenana {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .iverenana:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="votoaty-sosokevitra">
+        <h1>{{ sosokevitra.lohateny }}</h1>
+        {% if sosokevitra.sary %}
+            <img src="{{ sosokevitra.sary.url }}" alt="{{ sosokevitra.lohateny }}" class="sary-sosokevitra">
+        {% else %}
+            <img src="https://placehold.co/600x400/cccccc/ffffff?text=Tsy+misy+sary" alt="Tsy misy sary" class="sary-karatra">
+        {% endif %}
+        <p>{{ sosokevitra.ambara }}</p>
+        <p class="daty">Nampidirina tamin'ny: {{ sosokevitra.daty_nampidirana|date:"d M Y H:i" }}</p>
+        <a href="{% url 'fandraisana' %}" class="iverenana">Miverina amin'ny Fandraisana</a>
+    </div>
+</body>
+</html>

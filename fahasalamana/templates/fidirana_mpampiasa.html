@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fidirana Mpampiasa</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fbfd; /* Light and clean background */
+            color: #333;
+            display: flex; /* Use flexbox to center content */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            flex-direction: column; /* Stack elements vertically */
+        }
+
+        /* Container for the form */
+        .login-container {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            max-width: 450px; /* Optimal width for a login form */
+            width: 90%; /* Responsive width */
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: #28a745; /* Vibrant green */
+            margin-bottom: 1.8rem;
+            font-weight: 700;
+        }
+
+        form p {
+            margin-bottom: 1rem;
+            text-align: left; /* Align labels and inputs to the left */
+        }
+
+        form label {
+            display: block; /* Make labels take full width */
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        form input[type="text"],
+        form input[type="password"] {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            color: #333;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="password"]:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+            outline: none;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745; /* Vibrant green for button */
+            color: white;
+            padding: 0.9rem 1.8rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin-top: 1rem; /* Space above button */
+            width: 100%; /* Full width button */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p.register-link {
+            margin-top: 1.5rem;
+            font-size: 1em;
+            color: #555;
+        }
+
+        p.register-link a {
+            color: #16a085; /* Green for link */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        p.register-link a:hover {
+            color: #218838; /* Darker green on hover */
+            text-decoration: underline;
+        }
+
+        /* Django form error styles */
+        .errorlist {
+            color: #dc3545; /* Red for errors */
+            list-style-type: none;
+            padding: 0;
+            margin-top: -0.8rem;
+            margin-bottom: 1rem;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        /* Style for individual form fields if needed (e.g., if rendering with form.field) */
+        .form-group { /* Example class if you wrap fields */
+            margin-bottom: 1rem;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 1.8rem;
+                margin: 15px; /* Add some margin on smaller screens */
+            }
+
+            h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            button[type="submit"] {
+                padding: 0.8rem 1.5rem;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Fidirana ho an'ny Mpampiasa</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Midira</button>
+        </form>
+        <p class="register-link">Efa tsy manana kaonty ve ? <a href="{% url 'fisoratana_mpampiasa' %}">Hisoratra anarana</a></p>
+    </div>
+</body>
+</html>
