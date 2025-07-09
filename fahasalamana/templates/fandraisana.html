@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fahasalamana sy Fitsaboana Nenti-Paharazana</title>
+    <style>
+        /* Fanohanana voalohany */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Loharanon-dasi'ny pejy */
+        body {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* Loham-boambirano */
+        .loham-boambirano {
+            background-color: #1abc9c;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Sakafo ho an'ny navigasiona */
+        .sakafo-navigasiona {
+            background-color: #16a085;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        .sakafo-navigasiona a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sakafo-navigasiona a:hover {
+            background-color: #1abc9c;
+        }
+
+        /* Fizarana fototra */
+        .fizarana-fototra {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Loham-baventy */
+        .loham-baventy {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Karazan-tsombin'ny fitsaboana */
+        .karazana-fitsaboana {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .kartely-fitsaboana {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .kartely-fitsaboana:hover {
+            transform: translateY(-5px);
+        }
+
+        .sary-fitsaboana {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .fanoritry-kartely {
+            padding: 1rem;
+        }
+
+        .lohateny-kartely {
+            color: #16a085;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Fizarana momba ny fitsaboana */
+        .fizarana-fitsaboana {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Fizarana mpandray hafatra */
+        .fizarana-hafatra {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .inona-anontanianao {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .bokotra-maniraka {
+            background: #1abc9c;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .bokotra-maniraka:hover {
+            background: #16a085;
+        }
+
+        /* Tongotra */
+        .tongotra {
+            background: #16a085;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Adaptasiona ho an'ny finday */
+        @media (max-width: 768px) {
+            .karazana-fitsaboana {
+                grid-template-columns: 1fr;
+            }
+            
+            .sakafo-navigasiona {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .sakafo-navigasiona a {
+                margin: 0.25rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="loham-boambirano">
+        <h1>Fahasalamana sy Fitsaboana Nenti-Paharazana</h1>
+    </header>
+
+    <nav class="sakafo-navigasiona">
+        <a href="#">Fandraisana</a>
+        <a href="#">Karazana Fitsaboana</a>
+        <a href="#">Mpitsabo</a>
+        <a href="#">Fanamarihana</a>
+    </nav>
+
+    <main class="fizarana-fototra">
+        <section class="loham-baventy">
+            <h2>Tongasoa eto amin'ny sehatry ny fahasalamana nentim-paharazana</h2>
+            <p>Ny fomba sy fanomezana fitsaboana avy amin'ny razantsika no ahitana ny vahaolana ho an'ny aretina maro</p>
+        </section>
+
+        <section>
+            <h2 style="margin-bottom: 1rem;">Karazana Fitsaboana</h2>
+            <div class="karazana-fitsaboana">
+                <div class="kartely-fitsaboana">
+                    <img src="https://placehold.co/600x400" alt="Zava-maniry malagasy misy ravina maitso sy voninkazo fotsy" class="sary-fitsaboana">
+                    <div class="fanoritry-kartely">
+                        <h3 class="lohateny-kartely">Fitsaboana amin'ny zava-maniry</h3>
+                        <p>Fampiasana ny zava-maniry azo antoka sy nahandro araka ny fomba nentim-paharazana</p>
+                    </div>
+                </div>
+
+                <div class="kartely-fitsaboana">
+                    <img src="https://placehold.co/600x400" alt="Mpitsabo nentim-paharazana manao fanorana amin'ny tanana eo amin'ny lohan'ny marary" class="sary-fitsaboana">
+                    <div class="fanoritry-kartely">
+                        <h3 class="lohateny-kartely">Fanomanana ny vatana</h3>
+                        <p>Fomba tradisionaly amin'ny fanasitranana ny vatana sy fanarenana ny hery</p>
+                    </div>
+                </div>
+
+                <div class="kartely-fitsaboana">
+                    <img src="https://placehold.co/600x400" alt="Tavoahangy kely misy ranon-javatra mavo ho an'ny fitsaboana" class="sary-fitsaboana">
+                    <div class="fanoritry-kartely">
+                        <h3 class="lohateny-kartely">Ranomanitra sy menaka</h3>
+                        <p>Fampiasana ranomanitra voajanahary sy menaka manasitrana</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fizarana-fitsaboana">
+            <h2 style="margin-bottom: 1rem;">Inona ny fitsaboana nentim-paharazana?</h2>
+            <p>Ny fitsaboana nentim-paharazana dia ny fomba efa nisy nandritra ny taonarivo, nolovana tamin'ny taranaka maro, ary mifototra amin'ny fahalalana momba ny zava-maniry manasitrana, ny fanorana, ary ny antsipiriany momba ny fifandraisana eo amin'ny vatana sy ny fanahy.</p>
+            <p>Amin'ny fomba fitsaboana nentim-paharazana, ny marary dia jerena ho iray manontolo, fa tsy ny aretina irery ihany.</p>
+        </section>
+
+        <section class="fizarana-hafatra">
+            <h2 style="margin-bottom: 1rem;">Emetra hafatra amintsika</h2>
+            <form>
+                <input type="text" placeholder="Anaranao" class="inona-anontanianao">
+                <input type="email" placeholder="Mailaka" class="inona-anontanianao">
+                <textarea placeholder="Safidy na fanontaniana" class="inona-anontanianao" rows="5"></textarea>
+                <button type="submit" class="bokotra-maniraka">Maniraka</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="tongotra">
+        <p>© 2023 Fahasalamana sy Fitsaboana Nenti-Paharazana. Anarana rehetra voaaro.</p>
+    </footer>
+</body>
+</html>
